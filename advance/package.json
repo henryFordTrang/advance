@@ -13,6 +13,7 @@
     "core-js": "^2.6.5",
     "dayjs": "^1.8.12",
     "echarts": "^4.2.1",
+    "eslint": "^6.1.0",
     "normalize.css": "^8.0.1",
     "vant": "^2.0.1",
     "vue": "^2.6.10",
@@ -27,7 +28,6 @@
     "babel-eslint": "^10.0.1",
     "babel-plugin-import": "^1.11.0",
     "cssnano-preset-advanced": "^4.0.7",
-    "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "image-webpack-loader": "^5.0.0",
     "less": "^3.0.4",
@@ -41,5 +41,10 @@
     "postcss-write-svg": "^3.0.1",
     "vue-scroller": "^2.2.4",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
