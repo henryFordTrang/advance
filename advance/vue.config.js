@@ -35,19 +35,19 @@ module.exports = {
     }
   },
   // 合并 webpack
-  configureWebpack   : config => {
+  //configureWebpack   : config => {
     // if (isProduction) {
     // externals中的key是后面需要require的名字，value是第三方库暴露出来的方法名
-    config.externals = {
-      'vue'       : 'Vue',
-      'vue-router': 'VueRouter',
-      'vuex'      : 'Vuex',
-      'vant'      : 'vant',
-      'axios'     : 'axios',
-      'dayjs'     : 'dayjs'
-    }
+    // config.externals = {
+    //   'vue'       : 'Vue',
+    //   'vue-router': 'VueRouter',
+    //   'vuex'      : 'Vuex',
+    //   'vant'      : 'vant',
+    //   'axios'     : 'axios',
+    //   'dayjs'     : 'dayjs'
     // }
-  },
+    // }
+  //},
   // 修改 webpack
   chainWebpack       : config => {
     // 删除link 预取和预加载
