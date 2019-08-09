@@ -1,9 +1,13 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <van-button type="default">默认按钮</van-button>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>   
-    
+    <transition :name="animaInOut">
+      <keep-alive>
+        <router-view v-if="$route.meta.keepAlive" class="child-view"></router-view>
+      </keep-alive>
+    </transition>
+    <transition :name="animaInOut">
+        <router-view v-if="!$route.meta.keepAlive" class="child-view"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -15,24 +19,67 @@ export default {
   components: {
     HelloWorld
   },
-  watch:{
-    '$route'(nv,ov){
-      console.log(nv,'-----',ov)
+  data(){
+    return{
+      animaInOut:'slide-left',
     }
   },
-  mounted(){
-    console.log(this)
+  watch:{
+    $route(nv, ov) {
+      switch(this.$router.anima){
+        case 'level':this.animaInOut='';
+        break;
+        case 'go':this.animaInOut='slide-left';
+        break;
+        case 'back':this.animaInOut='slide-right';
+        break;
+      }
+      // const toDepth = to.path.split("/").length;
+      // const fromDepth = from.path.split("/").length;
+      // if (to.path == "/") {
+      //   this.direction = "slide-right";
+      // } else if (from.path == "/") {
+      //   this.direction = "slide-left";
+      // }else{
+      //   this.direction = toDepth < fromDepth ? "slide-right" : "slide-left";
+      // }
+      this.$router.anima = 'go'
+    }
+  },
+  methods:{
+    entry(){
+      this.$router.replace('inout')
+    }
+  },
+  created(){
+    window.removeEventListener('load', this.entry, false)
+    window.addEventListener('load', this.entry, false)
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html,body,#app{
+  height:100%;
+  width:100%;
 }
+
+.child-view { 
+  width:100%;
+  height:100%;
+  transition:all .5s cubic-bezier(.55,0,.55,0);
+} 
+.slide-left-enter{
+  transform: translate(100%, 0);
+}
+.slide-left-leave-active{
+  transform: translate(-50%, 0);
+}
+.slide-right-enter{
+  transform: translate(-100%, 0);
+}
+.slide-right-leave-active{
+  transform: translate(50%, 0);
+}
+
 </style>
