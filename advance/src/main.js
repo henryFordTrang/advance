@@ -32,7 +32,6 @@ new Vue({
     }
   },
   created(){   
-    console.log(_util.basicUrl('#'),'-------------------')     
     this.toastLoading();
   },
   mounted(){

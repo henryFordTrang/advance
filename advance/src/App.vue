@@ -26,6 +26,7 @@ export default {
   },
   watch:{
     $route(nv, ov) {
+      console.log($route)
       switch(this.$router.anima){
         case 'level':this.animaInOut='';
         break;
@@ -48,7 +49,9 @@ export default {
   },
   methods:{
     entry(){
-      this.$router.replace('inout')
+      var _this=this;
+      //console.log('----',_this.$router)
+      _this.$router.replace('/inout')
     }
   },
   created(){
