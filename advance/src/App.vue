@@ -13,7 +13,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+//import { mapGetters } from "vuex";
 export default {
   name: 'app',
   components: {
@@ -47,6 +47,7 @@ export default {
       this.$router.anima = 'go'
     }
   },
+  //computed:mapGetters(['device']),
   methods:{
     entry(){
       var _this=this;
@@ -55,6 +56,8 @@ export default {
     }
   },
   created(){
+    console.log(trang.device())
+    this.$store.commit('ifIphone',trang.device())
     window.removeEventListener('load', this.entry, false)
     window.addEventListener('load', this.entry, false)
   }

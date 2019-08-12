@@ -81,6 +81,21 @@
             toolbarType: "2"
           });
     }
+    trang.prototype.device=function(){
+        var u = navigator.userAgent;
+        var phone='';
+        if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+            //安卓
+            phone=0;
+        }else if (u.indexOf('iPhone') > -1){
+            //苹果
+            phone=1;
+        }else{
+            //PC浏览器
+            phone=2
+        }
+        return phone;
+    }
 
     W["trang"] = new trang();
 })(window, jQuery, jsBridge)
