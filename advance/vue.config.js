@@ -1,4 +1,6 @@
 const theme = require('./src/theme/theme')
+const proxyInfo = require('./src/util/settingInfo.js')
+//import proxyInfo from './src/util/settingInfo.js'
 const devPath = {
   name: '/zyschool',
   path: '/phone/'
@@ -17,14 +19,16 @@ module.exports = {
   devServer          : {
     disableHostCheck: true,
     port            : 9090,
+    //port:proxyInfo.port,
     // 跨域代理
-    proxy           : {
-      [`^${devPath.name}`]: {
-        target      : 'http://192.168.10.3:8080',
-        ws          : true,
-        changeOrigin: true
-      }
-    }
+    proxy:proxyInfo.setInfo
+    // proxy           : {
+    //   [`^${devPath.name}`]: {
+    //     target      : 'http://192.168.10.3:8080',
+    //     ws          : true,
+    //     changeOrigin: true
+    //   }
+    // }
   },
   css                : {
     loaderOptions: {

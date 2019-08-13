@@ -74,12 +74,18 @@
     }
 
     trang.prototype.innerOpen=function(url){
-        jsBridge.postNotification("CLIENT_OPEN_URL", {
+        B.postNotification("CLIENT_OPEN_URL", {
             title: "",
             loadType: "2",
             webUrl: url,
             toolbarType: "2"
           });
+    }
+    trang.prototype.exit=function(url){
+        B.postNotification('CLIENT_EXIT_WEBAPP', {});
+    }
+    trang.prototype.couldDisk=function(url){
+        B.postNotification('CLIENT_OPEN_CLOUD_DISK', {'cloudType':0}) ; 
     }
     trang.prototype.device=function(){
         var u = navigator.userAgent;

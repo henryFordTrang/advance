@@ -56,7 +56,6 @@ export default {
     }
   },
   created(){
-    console.log(trang.device())
     this.$store.commit('ifIphone',trang.device())
     window.removeEventListener('load', this.entry, false)
     window.addEventListener('load', this.entry, false)
